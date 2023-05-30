@@ -21,16 +21,23 @@ model Product {
   supplier     String?
   companyId    String?
   company      Company?  @relation(fields: [companyId], references: [id])
+  createdAt    DateTime  @default(now())
+  deletedAt    DateTime?
+  updatedAt    DateTime  @updatedAt
   requests     OrderItem[]
 }
 
 model Company {
-  id           String       @id @default(uuid())
+  id           String    @id @default(uuid())
   name         String
   address      String
   email        String
+  password     String
   phone        String
-  cnpj         String
+  cnpj         String    @unique
+  createdAt    DateTime  @default(now())
+  deletedAt    DateTime?
+  updatedAt    DateTime  @updatedAt
   products     Product[]
   customers    Client[]
 }
@@ -41,8 +48,11 @@ model Client {
   adress       String
   email        String
   phone        String?
-  cnpj_cpf     String?
+  cnpj_cpf     String?   @unique
   companyId    String?
+  createdAt    DateTime  @default(now())
+  deletedAt    DateTime?
+  updatedAt    DateTime  @updatedAt
   company      Company?  @relation(fields: [companyId], references: [id])
   order        Order[]
 }
@@ -55,6 +65,9 @@ model Order {
   status       String
   paytype      String?
   amount       Float?
+  createdAt    DateTime  @default(now())
+  deletedAt    DateTime?
+  updatedAt    DateTime  @updatedAt
   items        OrderItem[]
 }
 
@@ -66,5 +79,8 @@ model OrderItem {
   productId     String
   amount        Int
   unitPrice     Float
+  createdAt    DateTime  @default(now())
+  deletedAt    DateTime?
+  updatedAt    DateTime  @updatedAt
 }
 
