@@ -8,6 +8,8 @@ import { UpdateCompanyController } from './use-cases/update-company/update-compa
 import { UpdateCompanyService } from './use-cases/update-company/update-company.service';
 import { GetOneCompanyController } from './use-cases/get-one-company/get-one-company.controller';
 import { GetOneCompanyService } from './use-cases/get-one-company/get-one-company.service';
+import { DeleteCompanyController } from './use-cases/delete-company/delete-company.controller';
+import { DeleteCompanyService } from './use-cases/delete-company/delete-company.service';
 
 @Module({
   providers: [
@@ -16,12 +18,14 @@ import { GetOneCompanyService } from './use-cases/get-one-company/get-one-compan
     GetAllCompaniesService,
     UpdateCompanyService,
     GetOneCompanyService,
+    DeleteCompanyService,
   ],
   controllers: [
     CreateCompanyController,
     GetAllCompaniesController,
     UpdateCompanyController,
     GetOneCompanyController,
+    DeleteCompanyController,
   ],
 })
 export class CompanyModule {}
