@@ -4,9 +4,24 @@ import { CreateCompanyController } from './use-cases/create-company/create-compa
 import { PrismaService } from 'src/database/prisma.service';
 import { GetAllCompaniesController } from './use-cases/get-all-companies/get-all-companies.controller';
 import { GetAllCompaniesService } from './use-cases/get-all-companies/get-all-companies.service';
+import { UpdateCompanyController } from './use-cases/update-company/update-company.controller';
+import { UpdateCompanyService } from './use-cases/update-company/update-company.service';
+import { GetOneCompanyController } from './use-cases/get-one-company/get-one-company.controller';
+import { GetOneCompanyService } from './use-cases/get-one-company/get-one-company.service';
 
 @Module({
-  providers: [CreateCompanyService, PrismaService, GetAllCompaniesService],
-  controllers: [CreateCompanyController, GetAllCompaniesController],
+  providers: [
+    CreateCompanyService,
+    PrismaService,
+    GetAllCompaniesService,
+    UpdateCompanyService,
+    GetOneCompanyService,
+  ],
+  controllers: [
+    CreateCompanyController,
+    GetAllCompaniesController,
+    UpdateCompanyController,
+    GetOneCompanyController,
+  ],
 })
 export class CompanyModule {}
