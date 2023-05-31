@@ -11,7 +11,7 @@ datasource db {
 }
 
 model Product {
-  id           String       @id @default(uuid())
+  id           String       @unique @id @default(uuid())
   name         String
   description  String
   price        Float
@@ -19,8 +19,8 @@ model Product {
   category     String?
   brand        String?
   supplier     String?
-  companyId    String?
-  company      Company?  @relation(fields: [companyId], references: [id])
+  companyId    String
+  company      Company  @relation(fields: [companyId], references: [id])
   createdAt    DateTime  @default(now())
   deletedAt    DateTime?
   updatedAt    DateTime  @updatedAt
@@ -28,7 +28,7 @@ model Product {
 }
 
 model Company {
-  id           String    @id @default(uuid())
+  id           String    @unique @id @default(uuid())
   name         String
   address      String
   email        String
@@ -43,7 +43,7 @@ model Company {
 }
 
 model Client {
-  id           String       @id @default(uuid())
+  id           String       @unique @id @default(uuid())
   name         String
   adress       String
   email        String
@@ -58,7 +58,7 @@ model Client {
 }
 
 model Order {
-  id           String       @id @default(uuid())
+  id           String       @unique @id @default(uuid())
   client       Client   @relation(fields: [clientId], references: [id])
   clientId     String
   date         DateTime  @default(now())
@@ -72,7 +72,7 @@ model Order {
 }
 
 model OrderItem {
-  id            String       @id @default(uuid())
+  id            String       @unique @id @default(uuid())
   order         Order    @relation(fields: [orderId], references: [id])
   orderId       String
   product       Product   @relation(fields: [productId], references: [id])
