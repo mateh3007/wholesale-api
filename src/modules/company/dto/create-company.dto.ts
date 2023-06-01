@@ -18,4 +18,5 @@ export class CreateCompanyDto {
   email: string;
   phone: string;
   cnpj: string;
+  balance: number;
 }

@@ -35,6 +35,7 @@ model Company {
   password     String
   phone        String
   cnpj         String    @unique
+  balance      Float    @default(0)
   createdAt    DateTime  @default(now())
   deletedAt    DateTime?
   updatedAt    DateTime  @updatedAt

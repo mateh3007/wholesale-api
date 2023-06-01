@@ -11,6 +11,7 @@ import { GetOneCompanyService } from './use-cases/get-one-company/get-one-compan
 import { DeleteCompanyController } from './use-cases/delete-company/delete-company.controller';
 import { DeleteCompanyService } from './use-cases/delete-company/delete-company.service';
 import { ProductModule } from './product/product.module';
+import { BalanceModule } from './balance/balance.module';
 
 @Module({
   providers: [
@@ -28,6 +29,6 @@ import { ProductModule } from './product/product.module';
     GetOneCompanyController,
     DeleteCompanyController,
   ],
-  imports: [ProductModule],
+  imports: [ProductModule, BalanceModule],
 })
 export class CompanyModule {}
