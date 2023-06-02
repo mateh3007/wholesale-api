@@ -18,4 +18,18 @@ export class AuthService {
     }
     return null;
   }
+
+  async validateClient(email: string, password: string) {
+    const isValid = await this.prisma.client.findFirst({
+      where: {
+        email,
+        password,
+      },
+    });
+
+    if (isValid) {
+      return isValid;
+    }
+    return null;
+  }
 }

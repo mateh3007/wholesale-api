@@ -24,38 +24,39 @@ model Product {
   createdAt    DateTime  @default(now())
   deletedAt    DateTime?
   updatedAt    DateTime  @updatedAt
-  requests     OrderItem[]
+
 }
 
 model Company {
-  id           String    @unique @id @default(uuid())
-  name         String
-  address      String
-  email        String
-  password     String
-  phone        String
-  cnpj         String    @unique
-  balance      Float    @default(0)
-  createdAt    DateTime  @default(now())
-  deletedAt    DateTime?
-  updatedAt    DateTime  @updatedAt
-  products     Product[]
-  customers    Client[]
+  id             String    @unique @id @default(uuid())
+  name           String
+  address        String
+  email          String    @unique
+  password       String
+  phone          String
+  cnpj           String    @unique
+  balance        Float     @default(0)
+  productSales   Float     @default(0)
+  createdAt      DateTime  @default(now())
+  deletedAt      DateTime?
+  updatedAt      DateTime  @updatedAt
+  reportSentDate DateTime  @default(now())
+  products       Product[]
 }
 
 model Client {
   id           String       @unique @id @default(uuid())
+  password     String
   name         String
-  adress       String
-  email        String
+  address       String
+  email        String    @unique
   phone        String?
   cnpj_cpf     String?   @unique
-  companyId    String?
   createdAt    DateTime  @default(now())
   deletedAt    DateTime?
   updatedAt    DateTime  @updatedAt
-  company      Company?  @relation(fields: [companyId], references: [id])
   order        Order[]
+  purchases ProductSale[]
 }
 
 model Order {
@@ -69,19 +70,15 @@ model Order {
   createdAt    DateTime  @default(now())
   deletedAt    DateTime?
   updatedAt    DateTime  @updatedAt
-  items        OrderItem[]
 }
 
-model OrderItem {
-  id            String       @unique @id @default(uuid())
-  order         Order    @relation(fields: [orderId], references: [id])
-  orderId       String
-  product       Product   @relation(fields: [productId], references: [id])
-  productId     String
-  amount        Int
-  unitPrice     Float
-  createdAt    DateTime  @default(now())
-  deletedAt    DateTime?
-  updatedAt    DateTime  @updatedAt
+model ProductSale {
+  id         Int     @id @default(autoincrement())
+  productId  String
+  clientId   String
+  quantity   Int
+  price      Float
+  date       DateTime
+  client     Client  @relation(fields: [clientId], references: [id])
 }
 
