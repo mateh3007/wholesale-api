@@ -1,12 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/database/prisma.service';
-import { CreateClientDto } from '../../dto/create-client.dto';
+import { RegisterClientDto } from '../../dto/register-client.dto';
 
 @Injectable()
-export class CreateClientService {
+export class RegisterClientService {
   constructor(private readonly prisma: PrismaService) {}
 
-  async handle(data: CreateClientDto) {
+  async handle(data: RegisterClientDto) {
     const clientAlreadyExists = await this.prisma.client.findUnique({
       where: {
         email: data.email,

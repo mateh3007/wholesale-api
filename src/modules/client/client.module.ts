@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
-import { CreateClientController } from './use-cases/create-client/create-client.controller';
-import { CreateClientService } from './use-cases/create-client/create-client.service';
 import { PrismaService } from 'src/database/prisma.service';
+import { RegisterClientController } from './use-cases/create-client/create-client.controller';
+import { RegisterClientService } from './use-cases/create-client/create-client.service';
 
 @Module({
-  controllers: [CreateClientController],
-  providers: [CreateClientService, PrismaService],
+  controllers: [RegisterClientController],
+  providers: [RegisterClientService, PrismaService],
 })
 export class ClientModule {}

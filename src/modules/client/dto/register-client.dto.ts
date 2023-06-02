@@ -1,4 +1,4 @@
-export class CreateClientDto {
+export class RegisterClientDto {
   name: string;
   address: string;
   email: string;

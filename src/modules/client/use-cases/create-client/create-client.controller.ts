@@ -1,13 +1,13 @@
 import { Body, Controller, Post } from '@nestjs/common';
-import { CreateClientService } from './create-client.service';
-import { CreateClientDto } from '../../dto/create-client.dto';
+import { RegisterClientService } from './create-client.service';
+import { RegisterClientDto } from '../../dto/register-client.dto';
 
 @Controller('create-client')
-export class CreateClientController {
-  constructor(private readonly service: CreateClientService) {}
+export class RegisterClientController {
+  constructor(private readonly service: RegisterClientService) {}
 
   @Post()
-  async handle(@Body() body: CreateClientDto) {
+  async handle(@Body() body: RegisterClientDto) {
     return await this.service.handle(body);
   }
 }
