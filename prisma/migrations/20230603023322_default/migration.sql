@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE `client` ADD COLUMN `balance` DOUBLE NOT NULL DEFAULT 0;

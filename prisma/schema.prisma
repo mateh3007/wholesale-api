@@ -49,9 +49,10 @@ model Client {
   id           String       @unique @id @default(uuid())
   password     String
   name         String
-  address       String
+  address      String
   email        String    @unique
   phone        String?
+  balance        Float     @default(0)
   cnpj_cpf     String?   @unique
   createdAt    DateTime  @default(now())
   deletedAt    DateTime?

@@ -16,11 +16,21 @@ export class PlaceOrderService {
     //   throw new UnauthorizedException('Credenciais inválidas');
     // }
 
+    const client = await this.prisma.client.findUnique({
+      where: {
+        id: data.clientId,
+      },
+    });
+
     const product = await this.prisma.product.findFirst({
       where: {
         id: data.productId,
       },
     });
+
+    if (!product.isActive) {
+      throw new UnauthorizedException('Product not available');
+    }
 
     const price = product.price * data.quantity;
 
@@ -30,6 +40,10 @@ export class PlaceOrderService {
       throw new UnauthorizedException(
         'please make sure the given money has reached the expected amount',
       );
+    }
+
+    if (client.balance < price) {
+      throw new UnauthorizedException('insufficient funds');
     }
 
     await this.prisma.productSale.create({
@@ -49,6 +63,15 @@ export class PlaceOrderService {
       data: {
         isActive: false,
       },
+    });
+
+    const change: number = data.amountMoney - price;
+
+    const newBalance: number = client.balance - price + change;
+
+    await this.prisma.client.update({
+      where: { id: client.id },
+      data: { balance: newBalance },
     });
 
     return 'Compra finalizada com sucesso';
