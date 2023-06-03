@@ -11,6 +11,8 @@ import { UpdateProductController } from './use-cases/update-product/update-produ
 import { UpdateProductService } from './use-cases/update-product/update-product.service';
 import { GetOneProductService } from './use-cases/get-one-product/get-one-product.service';
 import { GetOneProductController } from './use-cases/get-one-product/get-one-product.controller';
+import { SellProductController } from './use-cases/sell-product/sell-product.controller';
+import { SellProductService } from './use-cases/sell-product/sell-product.service';
 
 @Module({
   controllers: [
@@ -19,6 +21,7 @@ import { GetOneProductController } from './use-cases/get-one-product/get-one-pro
     GetAllProductsController,
     UpdateProductController,
     DeleteProductController,
+    SellProductController,
   ],
   providers: [
     PrismaService,
@@ -28,6 +31,7 @@ import { GetOneProductController } from './use-cases/get-one-product/get-one-pro
     GetOneProductService,
     UpdateProductService,
     DeleteProductService,
+    SellProductService,
   ],
 })
 export class ProductModule {}

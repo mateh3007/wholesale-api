@@ -2,9 +2,19 @@ import { Module } from '@nestjs/common';
 import { PrismaService } from 'src/database/prisma.service';
 import { RegisterClientController } from './use-cases/create-client/create-client.controller';
 import { RegisterClientService } from './use-cases/create-client/create-client.service';
+import { PlaceOrderController } from './use-cases/place-order/place-order.controller';
+import { PlaceOrderService } from './use-cases/place-order/place-order.service';
+import { AuthService } from 'src/auth/auth.service';
+import { DebitFormController } from './use-cases/place-order/debit-form/debit-form.controller';
+import { CreditFormController } from './use-cases/place-order/credit-form/credit-form.controller';
 
 @Module({
-  controllers: [RegisterClientController],
-  providers: [RegisterClientService, PrismaService],
+  controllers: [RegisterClientController, PlaceOrderController, DebitFormController, CreditFormController],
+  providers: [
+    RegisterClientService,
+    PrismaService,
+    PlaceOrderService,
+    AuthService,
+  ],
 })
 export class ClientModule {}

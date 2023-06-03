@@ -11,7 +11,7 @@ datasource db {
 }
 
 model Product {
-  id           String       @unique @id @default(uuid())
+  id           String        @unique @id @default(uuid())
   name         String
   description  String
   price        Float
@@ -20,11 +20,12 @@ model Product {
   brand        String?
   supplier     String?
   companyId    String
-  company      Company  @relation(fields: [companyId], references: [id])
-  createdAt    DateTime  @default(now())
+  isActive     Boolean       @default(true)
+  company      Company       @relation(fields: [companyId], references: [id])
+  createdAt    DateTime      @default(now())
   deletedAt    DateTime?
-  updatedAt    DateTime  @updatedAt
-
+  updatedAt    DateTime      @updatedAt
+  sales        ProductSale[]
 }
 
 model Company {
@@ -80,5 +81,6 @@ model ProductSale {
   price      Float
   date       DateTime
   client     Client  @relation(fields: [clientId], references: [id])
+  product    Product      @relation(fields: [productId], references: [id])
 }
 
