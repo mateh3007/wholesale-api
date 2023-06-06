@@ -48,6 +48,7 @@ export class PlaceOrderService {
 
     await this.prisma.productSale.create({
       data: {
+        companyId: product.companyId,
         productName: product.name,
         productId: data.productId,
         clientId: data.clientId,
