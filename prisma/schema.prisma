@@ -76,6 +76,7 @@ model Order {
 
 model ProductSale {
   id         Int     @id @default(autoincrement())
+  productName String 
   productId  String
   clientId   String
   quantity   Int
