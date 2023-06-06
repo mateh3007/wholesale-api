@@ -10,6 +10,10 @@ import { CreditFormController } from './use-cases/place-order/credit-form/credit
 import { BalanceModule } from './balance/balance.module';
 import { PurchasesHistoricService } from './use-cases/place-order/purchases-historic/purchases-historic.service';
 import { PurchasesHistoricController } from './use-cases/place-order/purchases-historic/purchases-historic.controller';
+import { AccountController } from './use-cases/account/account.controller';
+import { AccountService } from './use-cases/account/account.service';
+import { EditAccountController } from './use-cases/edit-account/edit-account.controller';
+import { EditAccountService } from './use-cases/edit-account/edit-account.service';
 
 @Module({
   controllers: [
@@ -18,6 +22,8 @@ import { PurchasesHistoricController } from './use-cases/place-order/purchases-h
     DebitFormController,
     CreditFormController,
     PurchasesHistoricController,
+    AccountController,
+    EditAccountController,
   ],
   providers: [
     RegisterClientService,
@@ -25,6 +31,8 @@ import { PurchasesHistoricController } from './use-cases/place-order/purchases-h
     PlaceOrderService,
     AuthService,
     PurchasesHistoricService,
+    AccountService,
+    EditAccountService,
   ],
   imports: [BalanceModule],
 })
