@@ -1,5 +1,5 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
-import { AuthService } from 'src/auth/auth.service';
+import { AuthCompanyService } from 'src/auth/company/auth-company.service';
 import { DeleteProductDto } from '../../dto/delete-product.dto';
 import { PrismaService } from 'src/database/prisma.service';
 
@@ -7,7 +7,7 @@ import { PrismaService } from 'src/database/prisma.service';
 export class DeleteProductService {
   constructor(
     private readonly prisma: PrismaService,
-    private readonly authLogin: AuthService,
+    private readonly authLogin: AuthCompanyService,
   ) {}
 
   async handle(cnpj, password, data: DeleteProductDto) {

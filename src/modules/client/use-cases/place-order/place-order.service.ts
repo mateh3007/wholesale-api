@@ -1,5 +1,5 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
-import { AuthService } from 'src/auth/auth.service';
+import { AuthCompanyService } from 'src/auth/company/auth-company.service';
 import { PrismaService } from 'src/database/prisma.service';
 import { PlaceOrderDto } from '../../dto/place-order.dto';
 
@@ -7,14 +7,14 @@ import { PlaceOrderDto } from '../../dto/place-order.dto';
 export class PlaceOrderService {
   constructor(
     private readonly prisma: PrismaService,
-    private readonly authClientLogin: AuthService,
+    private readonly authClientLogin: AuthCompanyService,
   ) {}
 
-  async handle(data: PlaceOrderDto) {
-    // const isValid = await this.authClientLogin.validateUser(email, password);
-    // if (!isValid) {
-    //   throw new UnauthorizedException('Credenciais inválidas');
-    // }
+  async handle(email, password, data: PlaceOrderDto) {
+    const isValid = await this.authClientLogin.validateUser(email, password);
+    if (!isValid) {
+      throw new UnauthorizedException('Credenciais inválidas');
+    }
 
     const client = await this.prisma.client.findUnique({
       where: {

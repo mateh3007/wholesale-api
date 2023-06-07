@@ -4,8 +4,7 @@ import { RegisterClientController } from './use-cases/create-client/create-clien
 import { RegisterClientService } from './use-cases/create-client/create-client.service';
 import { PlaceOrderController } from './use-cases/place-order/place-order.controller';
 import { PlaceOrderService } from './use-cases/place-order/place-order.service';
-import { AuthService } from 'src/auth/auth.service';
-import { DebitFormController } from './use-cases/place-order/debit-form/debit-form.controller';
+import { AuthCompanyService } from 'src/auth/company/auth-company.service';
 import { CreditFormController } from './use-cases/place-order/credit-form/credit-form.controller';
 import { BalanceModule } from './balance/balance.module';
 import { PurchasesHistoricService } from './use-cases/place-order/purchases-historic/purchases-historic.service';
@@ -19,7 +18,6 @@ import { EditAccountService } from './use-cases/edit-account/edit-account.servic
   controllers: [
     RegisterClientController,
     PlaceOrderController,
-    DebitFormController,
     CreditFormController,
     PurchasesHistoricController,
     AccountController,
@@ -29,7 +27,7 @@ import { EditAccountService } from './use-cases/edit-account/edit-account.servic
     RegisterClientService,
     PrismaService,
     PlaceOrderService,
-    AuthService,
+    AuthCompanyService,
     PurchasesHistoricService,
     AccountService,
     EditAccountService,

@@ -1,5 +1,5 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
-import { AuthService } from 'src/auth/auth.service';
+import { AuthCompanyService } from 'src/auth/company/auth-company.service';
 import { PrismaService } from 'src/database/prisma.service';
 import { UpdateProductDto } from '../../dto/update-product.dto';
 import { CreatedProductDto } from '../../dto/created-product.dto';
@@ -8,7 +8,7 @@ import { CreatedProductDto } from '../../dto/created-product.dto';
 export class UpdateProductService {
   constructor(
     private readonly prisma: PrismaService,
-    private readonly authLogin: AuthService,
+    private readonly authLogin: AuthCompanyService,
   ) {}
 
   async handle(

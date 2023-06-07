@@ -1,16 +1,16 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
-import { AuthService } from 'src/auth/auth.service';
+import { AuthCompanyService } from 'src/auth/company/auth-company.service';
 import { PrismaService } from 'src/database/prisma.service';
-import { DepositBalanceDto } from '../../dto/deposit-balance.dto';
+import { ExpenseBalanceDto } from '../../dto/expense-balance.dto';
 
 @Injectable()
 export class ExpenseBalanceService {
   constructor(
     private readonly prisma: PrismaService,
-    private readonly authLogin: AuthService,
+    private readonly authLogin: AuthCompanyService,
   ) {}
 
-  async handle(cnpj, password, data: DepositBalanceDto) {
+  async handle(cnpj, password, data: ExpenseBalanceDto) {
     const isValid = await this.authLogin.validateUser(cnpj, password);
     if (!isValid) {
       throw new UnauthorizedException('Credenciais inválidas');

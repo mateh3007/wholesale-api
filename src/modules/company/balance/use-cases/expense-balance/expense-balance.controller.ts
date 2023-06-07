@@ -8,7 +8,7 @@ import {
 } from '@nestjs/common';
 import { ExpenseBalanceService } from './expense-balance.service';
 import { AuthGuard } from '@nestjs/passport';
-import { DepositBalanceDto } from '../../dto/deposit-balance.dto';
+import { ExpenseBalanceDto } from '../../dto/expense-balance.dto';
 
 @Controller('expense-balance')
 export class ExpenseBalanceController {
@@ -16,7 +16,7 @@ export class ExpenseBalanceController {
 
   @Post()
   @UseGuards(AuthGuard('basic'))
-  async handle(@Request() req, @Body() body: DepositBalanceDto) {
+  async handle(@Request() req, @Body() body: ExpenseBalanceDto) {
     try {
       return await this.service.handle(req.user.cnpj, req.user.password, body);
     } catch (error) {

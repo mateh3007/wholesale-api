@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { AuthService } from 'src/auth/auth.service';
+import { AuthCompanyService } from 'src/auth/company/auth-company.service';
 import { PrismaService } from 'src/database/prisma.service';
 import { CreateProductController } from './use-cases/create-product/create-product.controller';
 import { CreateProductService } from './use-cases/create-product/create-product.service';
@@ -11,8 +11,6 @@ import { UpdateProductController } from './use-cases/update-product/update-produ
 import { UpdateProductService } from './use-cases/update-product/update-product.service';
 import { GetOneProductService } from './use-cases/get-one-product/get-one-product.service';
 import { GetOneProductController } from './use-cases/get-one-product/get-one-product.controller';
-import { SellProductController } from './use-cases/sell-product/sell-product.controller';
-import { SellProductService } from './use-cases/sell-product/sell-product.service';
 
 @Module({
   controllers: [
@@ -21,17 +19,15 @@ import { SellProductService } from './use-cases/sell-product/sell-product.servic
     GetAllProductsController,
     UpdateProductController,
     DeleteProductController,
-    SellProductController,
   ],
   providers: [
     PrismaService,
-    AuthService,
+    AuthCompanyService,
     CreateProductService,
     GetAllProductsService,
     GetOneProductService,
     UpdateProductService,
     DeleteProductService,
-    SellProductService,
   ],
 })
 export class ProductModule {}
