@@ -2,13 +2,13 @@ import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/database/prisma.service';
 
 @Injectable()
-export class AuthService {
+export class AuthClientService {
   constructor(private readonly prisma: PrismaService) {}
 
-  async validateUser(cnpj: string, password: string) {
-    const isValid = await this.prisma.company.findFirst({
+  async validateUser(email: string, password: string) {
+    const isValid = await this.prisma.client.findFirst({
       where: {
-        cnpj,
+        email,
         password,
       },
     });

@@ -1,23 +1,23 @@
 import {
   Controller,
   Post,
+  UnauthorizedException,
   UseGuards,
   Request,
-  UnauthorizedException,
 } from '@nestjs/common';
+import { AuthClientService } from './auth-client.service';
 import { AuthGuard } from '@nestjs/passport';
-import { AuthService } from './auth.service';
 
-@Controller('auth')
-export class AuthController {
-  constructor(private readonly authService: AuthService) {}
+@Controller('auth-client')
+export class AuthClientController {
+  constructor(private readonly authService: AuthClientService) {}
 
-  @Post('companyLogin')
-  @UseGuards(AuthGuard('basic'))
+  @Post()
+  @UseGuards(AuthGuard('BasicClientStrategy'))
   async companyLogin(@Request() req) {
     try {
       const admin = await this.authService.validateUser(
-        req.user.cnpj,
+        req.user.email,
         req.user.password,
       );
       return { message: 'Login bem-sucedido', admin };
