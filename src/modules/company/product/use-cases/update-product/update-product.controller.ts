@@ -15,7 +15,7 @@ export class UpdateProductController {
   constructor(private readonly service: UpdateProductService) {}
 
   @Put()
-  @UseGuards(AuthGuard('basic'))
+  @UseGuards(AuthGuard('BasicCompanyStrategy'))
   async handle(@Request() req, @Body() body: UpdateProductDto) {
     try {
       return await this.service.handle(req.user.cnpj, req.user.password, body);

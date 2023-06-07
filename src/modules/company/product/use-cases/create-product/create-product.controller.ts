@@ -15,7 +15,7 @@ export class CreateProductController {
   constructor(private readonly productService: CreateProductService) {}
 
   @Post()
-  @UseGuards(AuthGuard('basic'))
+  @UseGuards(AuthGuard('BasicCompanyStrategy'))
   async handle(@Request() req, @Body() body: CreateProductDto) {
     try {
       return await this.productService.handle(

@@ -13,7 +13,7 @@ export class ConsultBalanceController {
   constructor(private readonly service: ConsultBalanceService) {}
 
   @Get()
-  @UseGuards(AuthGuard('basic'))
+  @UseGuards(AuthGuard('BasicCompanyStrategy'))
   async handle(@Request() req) {
     try {
       return await this.service.handle(req.user.cnpj, req.user.password);

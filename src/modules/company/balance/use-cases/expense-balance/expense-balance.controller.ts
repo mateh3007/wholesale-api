@@ -15,7 +15,7 @@ export class ExpenseBalanceController {
   constructor(private readonly service: ExpenseBalanceService) {}
 
   @Post()
-  @UseGuards(AuthGuard('basic'))
+  @UseGuards(AuthGuard('BasicCompanyStrategy'))
   async handle(@Request() req, @Body() body: ExpenseBalanceDto) {
     try {
       return await this.service.handle(req.user.cnpj, req.user.password, body);

@@ -15,7 +15,7 @@ export class DepositBalanceController {
   constructor(private readonly service: DepositBalanceService) {}
 
   @Post()
-  @UseGuards(AuthGuard('basic'))
+  @UseGuards(AuthGuard('BasicCompanyStrategy'))
   async handle(@Request() req, @Body() body: DepositBalanceDto) {
     try {
       return await this.service.handle(req.user.cnpj, req.user.password, body);

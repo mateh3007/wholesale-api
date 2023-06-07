@@ -15,7 +15,7 @@ export class DeleteProductController {
   constructor(private readonly service: DeleteProductService) {}
 
   @Delete()
-  @UseGuards(AuthGuard('basic'))
+  @UseGuards(AuthGuard('BasicCompanyStrategy'))
   async handle(@Request() req, @Body() body: DeleteProductDto) {
     try {
       return await this.service.handle(req.user.cnpj, req.user.password, body);

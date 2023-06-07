@@ -13,7 +13,7 @@ export class BasicCompanyStrategy extends PassportStrategy(
   }
 
   async validate(cnpj: string, password: string) {
-    console.log('COmpany');
+    console.log(cnpj);
     const user = await this.authService.validateUser(cnpj, password);
     if (!user) {
       throw new UnauthorizedException();
