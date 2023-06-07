@@ -1,13 +1,13 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
-import { AuthCompanyService } from 'src/auth/company/auth-company.service';
 import { PrismaService } from 'src/database/prisma.service';
 import { PlaceOrderDto } from '../../dto/place-order.dto';
+import { AuthClientService } from 'src/auth/client/auth-client.service';
 
 @Injectable()
 export class PlaceOrderService {
   constructor(
     private readonly prisma: PrismaService,
-    private readonly authClientLogin: AuthCompanyService,
+    private readonly authClientLogin: AuthClientService,
   ) {}
 
   async handle(email, password, data: PlaceOrderDto) {

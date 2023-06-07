@@ -14,7 +14,6 @@ export class BasicClientStrategy extends PassportStrategy(
 
   async validate(email: string, password: string) {
     const user = await this.authService.validateUser(email, password);
-    console.log('Basic Client');
     if (!user) {
       throw new UnauthorizedException();
     }

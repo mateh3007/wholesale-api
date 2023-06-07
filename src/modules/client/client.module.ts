@@ -13,6 +13,7 @@ import { AccountController } from './use-cases/account/account.controller';
 import { AccountService } from './use-cases/account/account.service';
 import { EditAccountController } from './use-cases/edit-account/edit-account.controller';
 import { EditAccountService } from './use-cases/edit-account/edit-account.service';
+import { AuthClientService } from 'src/auth/client/auth-client.service';
 
 @Module({
   controllers: [
@@ -24,6 +25,7 @@ import { EditAccountService } from './use-cases/edit-account/edit-account.servic
     EditAccountController,
   ],
   providers: [
+    AuthClientService,
     RegisterClientService,
     PrismaService,
     PlaceOrderService,

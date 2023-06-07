@@ -13,6 +13,8 @@ export class AuthClientService {
       },
     });
 
+    console.log(isValid);
+
     if (isValid) {
       return isValid;
     }

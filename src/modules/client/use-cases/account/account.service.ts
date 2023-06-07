@@ -1,12 +1,20 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { PrismaService } from 'src/database/prisma.service';
 import { AccountDto } from '../../dto/account.dto';
+import { AuthClientService } from 'src/auth/client/auth-client.service';
 
 @Injectable()
 export class AccountService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly authLogin: AuthClientService,
+  ) {}
 
-  async handle(data: AccountDto) {
+  async handle(email, password, data: AccountDto) {
+    const isValid = await this.authLogin.validateUser(email, password);
+    if (!isValid) {
+      throw new UnauthorizedException('Credenciais inválidas');
+    }
     const client = await this.prisma.client.findUnique({
       where: {
         id: data.id,

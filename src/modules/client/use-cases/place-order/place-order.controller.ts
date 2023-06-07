@@ -15,7 +15,7 @@ export class PlaceOrderController {
   constructor(private readonly service: PlaceOrderService) {}
 
   @Post()
-  @UseGuards(AuthGuard('basic'))
+  @UseGuards(AuthGuard('BasicClientStrategy'))
   async handle(@Request() req, @Body() body: PlaceOrderDto) {
     try {
       return await this.service.handle(req.user.cnpj, req.user.password, body);
