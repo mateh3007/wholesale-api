@@ -10,11 +10,11 @@ import {
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 
-@Controller('place-order')
+@Controller('client')
 export class PlaceOrderController {
   constructor(private readonly service: PlaceOrderService) {}
 
-  @Post()
+  @Post('place-order')
   @UseGuards(AuthGuard('BasicClientStrategy'))
   async handle(@Request() req, @Body() body: PlaceOrderDto) {
     try {

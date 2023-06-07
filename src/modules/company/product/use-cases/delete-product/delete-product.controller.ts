@@ -10,11 +10,11 @@ import { DeleteProductService } from './delete-product.service';
 import { DeleteProductDto } from '../../dto/delete-product.dto';
 import { AuthGuard } from '@nestjs/passport';
 
-@Controller('delete-product')
+@Controller('company')
 export class DeleteProductController {
   constructor(private readonly service: DeleteProductService) {}
 
-  @Delete()
+  @Delete('delete-product')
   @UseGuards(AuthGuard('BasicCompanyStrategy'))
   async handle(@Request() req, @Body() body: DeleteProductDto) {
     try {

@@ -8,11 +8,11 @@ import {
 import { ConsultBalanceService } from './consult-balance.service';
 import { AuthGuard } from '@nestjs/passport';
 
-@Controller('consult-balance')
+@Controller('company')
 export class ConsultBalanceController {
   constructor(private readonly service: ConsultBalanceService) {}
 
-  @Get()
+  @Get('consult-balance')
   @UseGuards(AuthGuard('BasicCompanyStrategy'))
   async handle(@Request() req) {
     try {

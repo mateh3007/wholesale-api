@@ -10,11 +10,11 @@ import { UpdateProductService } from './update-product.service';
 import { AuthGuard } from '@nestjs/passport';
 import { UpdateProductDto } from '../../dto/update-product.dto';
 
-@Controller('update-product')
+@Controller('company')
 export class UpdateProductController {
   constructor(private readonly service: UpdateProductService) {}
 
-  @Put()
+  @Put('update-product')
   @UseGuards(AuthGuard('BasicCompanyStrategy'))
   async handle(@Request() req, @Body() body: UpdateProductDto) {
     try {

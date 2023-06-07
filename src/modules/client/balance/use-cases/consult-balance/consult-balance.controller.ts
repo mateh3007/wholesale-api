@@ -1,4 +1,4 @@
 import { Controller } from '@nestjs/common';
 
-@Controller('consult-balance')
+@Controller('client')
 export class ConsultBalanceController {}
