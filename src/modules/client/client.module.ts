@@ -14,6 +14,7 @@ import { AccountService } from './use-cases/account/account.service';
 import { EditAccountController } from './use-cases/edit-account/edit-account.controller';
 import { EditAccountService } from './use-cases/edit-account/edit-account.service';
 import { AuthClientService } from 'src/auth/client/auth-client.service';
+import { SaleReceiptService } from './use-cases/places-order/sale-receipt/sale-receipt.service';
 
 @Module({
   controllers: [
@@ -33,6 +34,7 @@ import { AuthClientService } from 'src/auth/client/auth-client.service';
     PurchasesHistoricService,
     AccountService,
     EditAccountService,
+    SaleReceiptService,
   ],
   imports: [BalanceModule],
 })
