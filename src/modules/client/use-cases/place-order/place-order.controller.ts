@@ -7,6 +7,7 @@ import {
   UnauthorizedException,
   UseGuards,
   Request,
+  HttpCode,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 
@@ -14,6 +15,7 @@ import { AuthGuard } from '@nestjs/passport';
 export class PlaceOrderController {
   constructor(private readonly service: PlaceOrderService) {}
 
+  @HttpCode(200)
   @Post('place-order')
   @UseGuards(AuthGuard('BasicClientStrategy'))
   async handle(@Request() req, @Body() body: PlaceOrderDto) {

@@ -1,4 +1,4 @@
-import { Controller, Get, UseGuards, Request } from '@nestjs/common';
+import { Controller, Get, UseGuards, Request, HttpCode } from '@nestjs/common';
 import { PurchasesHistoricService } from './purchases-historic.service';
 import { AuthGuard } from '@nestjs/passport';
 
@@ -6,6 +6,7 @@ import { AuthGuard } from '@nestjs/passport';
 export class PurchasesHistoricController {
   constructor(private readonly service: PurchasesHistoricService) {}
 
+  @HttpCode(204)
   @Get('purchases-historic')
   @UseGuards(AuthGuard('BasicClientStrategy'))
   async handle(@Request() req) {

@@ -5,6 +5,7 @@ import {
   UnauthorizedException,
   UseGuards,
   Request,
+  HttpCode,
 } from '@nestjs/common';
 import { DeleteProductService } from './delete-product.service';
 import { DeleteProductDto } from '../../dto/delete-product.dto';
@@ -14,6 +15,7 @@ import { AuthGuard } from '@nestjs/passport';
 export class DeleteProductController {
   constructor(private readonly service: DeleteProductService) {}
 
+  @HttpCode(204)
   @Delete('delete-product')
   @UseGuards(AuthGuard('BasicCompanyStrategy'))
   async handle(@Request() req, @Body() body: DeleteProductDto) {

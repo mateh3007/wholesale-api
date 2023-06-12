@@ -5,6 +5,7 @@ import {
   UseGuards,
   Request,
   Body,
+  HttpCode,
 } from '@nestjs/common';
 import { DepositBalanceService } from './deposit-balance.service';
 import { AuthGuard } from '@nestjs/passport';
@@ -14,6 +15,7 @@ import { DepositBalanceDto } from '../../dto/deposit-balance.dto';
 export class DepositBalanceController {
   constructor(private readonly service: DepositBalanceService) {}
 
+  @HttpCode(201)
   @Post('deposit-balance')
   @UseGuards(AuthGuard('BasicCompanyStrategy'))
   async handle(@Request() req, @Body() body: DepositBalanceDto) {

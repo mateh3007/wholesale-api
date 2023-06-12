@@ -5,6 +5,7 @@ import {
   UnauthorizedException,
   UseGuards,
   Request,
+  HttpCode,
 } from '@nestjs/common';
 import { ExpenseBalanceService } from './expense-balance.service';
 import { AuthGuard } from '@nestjs/passport';
@@ -14,6 +15,7 @@ import { ExpenseBalanceDto } from '../../dto/expense-balance.dto';
 export class ExpenseBalanceController {
   constructor(private readonly service: ExpenseBalanceService) {}
 
+  @HttpCode(200)
   @Post('expense-balance')
   @UseGuards(AuthGuard('BasicCompanyStrategy'))
   async handle(@Request() req, @Body() body: ExpenseBalanceDto) {

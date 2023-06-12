@@ -7,15 +7,11 @@ import { DepositBalanceService } from './use-cases/deposit-balance/deposit-balan
 import { DepositBalanceController } from './use-cases/deposit-balance/deposit-balance.controller';
 import { ExpenseBalanceController } from './use-cases/expense-balance/expense-balance.controller';
 import { ExpenseBalanceService } from './use-cases/expense-balance/expense-balance.service';
-import { FinalReportBalanceController } from './use-cases/final-report-balance/final-report-balance.controller';
-import { FinalReportBalanceService } from './use-cases/final-report-balance/final-report-balance.service';
-
 @Module({
   controllers: [
     ConsultBalanceController,
     DepositBalanceController,
     ExpenseBalanceController,
-    FinalReportBalanceController,
   ],
   providers: [
     ConsultBalanceService,
@@ -23,7 +19,6 @@ import { FinalReportBalanceService } from './use-cases/final-report-balance/fina
     AuthCompanyService,
     DepositBalanceService,
     ExpenseBalanceService,
-    FinalReportBalanceService,
   ],
 })
 export class BalanceModule {}

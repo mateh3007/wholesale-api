@@ -5,6 +5,7 @@ import {
   UseGuards,
   Request,
   Body,
+  HttpCode,
 } from '@nestjs/common';
 import { CreateProductService } from './create-product.service';
 import { AuthGuard } from '@nestjs/passport';
@@ -14,6 +15,7 @@ import { CreateProductDto } from '../../dto/create-product.dto';
 export class CreateProductController {
   constructor(private readonly productService: CreateProductService) {}
 
+  @HttpCode(201)
   @Post('create-product')
   @UseGuards(AuthGuard('BasicCompanyStrategy'))
   async handle(@Request() req, @Body() body: CreateProductDto) {

@@ -1,4 +1,4 @@
-import { Body, Controller, Delete } from '@nestjs/common';
+import { Body, Controller, Delete, HttpCode } from '@nestjs/common';
 import { DeleteCompanyService } from './delete-company.service';
 import { DeleteCompanyDto } from '../../dto/delete-company.dto';
 
@@ -6,6 +6,7 @@ import { DeleteCompanyDto } from '../../dto/delete-company.dto';
 export class DeleteCompanyController {
   constructor(private readonly service: DeleteCompanyService) {}
 
+  @HttpCode(204)
   @Delete()
   async handle(@Body() body: DeleteCompanyDto) {
     return await this.service.handle(body);

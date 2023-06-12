@@ -1,4 +1,4 @@
-import { Controller, Get, UseGuards, Request } from '@nestjs/common';
+import { Controller, Get, UseGuards, Request, HttpCode } from '@nestjs/common';
 import { ConsultBalanceService } from './consult-balance.service';
 import { AuthGuard } from '@nestjs/passport';
 
@@ -6,6 +6,7 @@ import { AuthGuard } from '@nestjs/passport';
 export class ConsultBalanceController {
   constructor(private readonly service: ConsultBalanceService) {}
 
+  @HttpCode(200)
   @Get('consult-balance')
   @UseGuards(AuthGuard('BasicClientStrategy'))
   async handle(@Request() req) {
