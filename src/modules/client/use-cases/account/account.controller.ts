@@ -10,6 +10,6 @@ export class AccountController {
   @Get('account')
   @UseGuards(AuthGuard('BasicClientStrategy'))
   async handle(@Body() body: AccountDto, @Request() req) {
-    return await this.service.handle(req.user, req.password, body);
+    return await this.service.handle(req.user.email, req.user.password, body);
   }
 }

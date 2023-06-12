@@ -18,7 +18,7 @@ export class PlaceOrderController {
   @UseGuards(AuthGuard('BasicClientStrategy'))
   async handle(@Request() req, @Body() body: PlaceOrderDto) {
     try {
-      return await this.service.handle(req.user.cnpj, req.user.password, body);
+      return await this.service.handle(req.user.email, req.user.password, body);
     } catch (error) {
       throw new UnauthorizedException('Credenciais inválidas');
     }

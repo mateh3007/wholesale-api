@@ -9,6 +9,6 @@ export class PurchasesHistoricController {
   @Get('purchases-historic')
   @UseGuards(AuthGuard('BasicClientStrategy'))
   async handle(@Request() req) {
-    return await this.service.handle(req.user, req.password);
+    return await this.service.handle(req.user.email, req.user.password);
   }
 }
